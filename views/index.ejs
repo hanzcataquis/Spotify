@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>A Bit Like Spotify</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Spotify Clone</h1>
+        <div class="button-container">
+            <button class="add-song-link" onclick="openUploadModal()">Add Song</button>
+        </div>
+        <div class="song-card-container">
+            <% songs.forEach((song, index) => { %>
+                <div class="song-card" data-index="<%= index %>" data-id="<%= song.id %>" data-filepath="<%= song.musicFilePath %>" onclick="selectSong(this)">
+                    <div class="cd-icon">💿</div>
+                    <div class="song-title"><%= song.title %></div>
+                </div>
+            <% }); %>
+        </div>
+        <div id="playerModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closePlayerModal()">&times;</span>
+                <h2 id="currentSongTitle">Now Playing</h2>
+                <div id="player-controls">
+                    <button id="repeatButton" class="nav-button" onclick="toggleRepeat()">🔁</button>
+                    <button id="prevButton" class="nav-button" onclick="prevSong()">◀</button>
+                    <audio controls id="audioPlayer">
+                        <source id="audioSource" src="" type="audio/mpeg">
+                        Your browser does not support the audio tag.
+                    </audio>
+                    <button id="nextButton" class="nav-button" onclick="nextSong()">▶</button>
+                    <button id="shuffleButton" class="nav-button" onclick="toggleShuffle()">🔀</button>
+                    <div class="three-dot-menu">
+                        <button class="three-dot-button" onclick="toggleMenu()">⋮</button>
+                        <div id="menu" class="menu-content">
+                            <button onclick="openEditModal()">Edit Song</button>
+                            <form id="deleteForm" action="/delete" method="POST" class="delete-form">
+                                <input type="hidden" name="id" id="deleteSongId">
+                                <button type="button" onclick="confirmDeleteSong()">Delete Song</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="editSongModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeEditModal()">&times;</span>
+                <h2>Edit Song</h2>
+                <form action="/edit" method="POST">
+                    <input type="hidden" name="id" id="editSongId">
+                    <input type="text" name="title" id="editSongTitle" class="input-field" required />
+                    <div class="button-container-modal">
+                        <button type="button" class="cancel-button" onclick="closeEditModal()">Cancel</button>
+                        <button type="submit" class="submit-button">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="uploadModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeUploadModal()">&times;</span>
+                <h2>Upload Song</h2>
+                <form id="uploadForm" action="/add" method="POST" enctype="multipart/form-data" class="upload-form">
+                    <input type="text" name="title" placeholder="Song Title" required class="input-field"/>
+                    <input type="file" name="musicFile" accept="audio/*" required class="file-input"/>
+                    <div class="button-container-modal">
+                        <button type="button" class="cancel-button" onclick="closeUploadModal()">Cancel</button>
+                        <button type="submit" class="submit-button">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/js/player.js"></script>
+</body>
+</html>

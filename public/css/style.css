@@ -1,0 +1,204 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.button-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-song-link, .cancel-button, .submit-button, .menu-button {
+    padding: 10px 20px;
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.add-song-link:hover, .cancel-button:hover, .submit-button:hover, .menu-button:hover {
+    background-color: #1aa34a;
+}
+
+.song-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.song-card {
+    background-color: #333;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.song-card:hover {
+    background-color: #444;
+}
+
+.cd-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.song-title {
+    font-size: 1rem;
+    color: white;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #222;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: white;
+    cursor: pointer;
+}
+
+#currentSongTitle {
+    text-align: center;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+}
+
+#player-controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+audio {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.nav-button {
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 2px;
+}
+
+.nav-button:hover {
+    background-color: #1aa34a;
+}
+
+#repeatButton.active,
+#shuffleButton.active {
+    background-color: #1aa34a;
+}
+
+.input-field, .file-input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+}
+
+.input-field::placeholder, .file-input::placeholder {
+    color: #aaa;
+}
+
+.button-container-modal {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    border: 1px solid #888;
+    border-radius: 5px;
+    z-index: 100;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: 10px;
+}
+
+.menu-content button {
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px 0;
+    width: 100%;
+}
+
+.menu-content button:hover {
+    background-color: #1aa34a;
+}
+
+.three-dot-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.three-dot-button {
+    background-color: #1DB954;
+    border: none;
+    padding: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 2px;
+}
+
+.three-dot-button:hover {
+    background-color: #1aa34a;
+}
